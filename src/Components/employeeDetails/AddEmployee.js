@@ -29,6 +29,7 @@ const AddEmployee = () => {
             id="name"
             aria-describedby="emailHelp"
             placeholder="Enter employee Name"
+            required
             onChange={handleChange}
           />
 
@@ -44,6 +45,7 @@ const AddEmployee = () => {
             className="form-control"
             id="job"
             placeholder="Enter Job name"
+            required
             onChange={handleChange}
           />
         </div>
@@ -57,6 +59,7 @@ const AddEmployee = () => {
             className="form-control"
             id="hireDate"
             placeholder="Enter Date Of onboarding"
+            required
             onChange={handleChange}
           />
         </div>
@@ -70,6 +73,7 @@ const AddEmployee = () => {
             className="form-control"
             id="dept"
             placeholder="Enter Department Name"
+            required
             onChange={handleChange}
           />
         </div>
