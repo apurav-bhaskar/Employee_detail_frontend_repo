@@ -8,7 +8,7 @@ const RootRouter = () => {
     <div>
         <Routes>
            <Route exact path='/' element={<EmployeeDetails/>}></Route> 
-           <Route exact path='/addEmployee' ></Route>
+           <Route exact path='/addEmployee' element={<AddEmployee/>}></Route>
            <Route path='*' element={<Error/>}></Route>
         </Routes>
     </div>
