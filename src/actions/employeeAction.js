@@ -6,7 +6,6 @@ export const retrieveEmployees = (employees) => ({
   payload: employees,
 });
 export const loadEmployees = () => {
-  console.log("JJJ");
   return function (dispatch) {
     employeeService
       .get()

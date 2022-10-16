@@ -6,10 +6,12 @@ export default makeStyles(() => ({
   },
   headerTitle: {
     display: "flex",
-    justifyContent: "spaceBetween",
   },
   title: {
     marginLeft: "20px",
     marginTop: "5.6px",
+  },
+  linkStyle: {
+    textDecoration: "none",
   },
 }));

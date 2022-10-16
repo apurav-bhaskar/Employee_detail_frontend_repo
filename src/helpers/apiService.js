@@ -11,6 +11,78 @@ const employees = [
     hireDate: "8/08/2022",
     department: "EFGH",
   },
+  {
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },
+  {
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },{
+    name: "Mohan",
+    job: "Finance",
+    hireDate: "8/08/2022",
+    department: "EFGH",
+  },
 ];
 export default {
   get: async () => {
