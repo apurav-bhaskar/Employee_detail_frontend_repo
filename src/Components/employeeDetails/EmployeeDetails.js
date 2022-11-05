@@ -1,16 +1,19 @@
-import React,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { loadEmployees } from "../../actions/employeeAction";
-import Moment from 'moment';
- 
+import { loadEmployees, deleteEmployee } from "../../actions/employeeAction";
+import Moment from "moment";
+
 const EmployeeDetails = () => {
   const dispatch = useDispatch();
   const employees = useSelector((state) => state.allEmployees.employees);
-  const hire_date=Moment(employees.hire_date).format("YYYY-MM-DD");
+  const hire_date = Moment(employees.hire_date).format("YYYY-MM-DD");
   useEffect(() => {
     dispatch(loadEmployees());
   }, []);
 
+  const handleDelete = async (id) => {
+    dispatch(deleteEmployee(id));
+  };
   return (
     <>
       <table class="table table-striped table-dark">
@@ -32,7 +35,14 @@ const EmployeeDetails = () => {
               <td>{hire_date}</td>
               <td>{employees.dept_name}</td>
               <td>
-                <button className="btn btn-danger">Delete</button>
+                <button
+                  onClick={() => {
+                    handleDelete(employees.emp_id);
+                  }}
+                  className="btn btn-danger"
+                >
+                  Delete
+                </button>
               </td>
               <td>
                 <button className="btn btn-primary">Edit</button>

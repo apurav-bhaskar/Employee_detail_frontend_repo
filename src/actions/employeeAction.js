@@ -5,12 +5,28 @@ export const retrieveEmployees = (employees) => ({
   type: types.RETRIEVE_EMPLOYEE,
   payload: employees,
 });
+
+export const employeeDeleted = () => ({
+  type: types.DELETE_EMPLOYEE,
+});
 export const loadEmployees = () => {
   return function (dispatch) {
     employeeService
       .get()
       .then((resp) => {
         dispatch(retrieveEmployees(resp));
+      })
+      .catch((error) => console.log(error));
+  };
+};
+
+export const deleteEmployee = (id) => {
+  return function (dispatch) {
+    employeeService
+      .delete(id)
+      .then((resp) => {
+        dispatch(employeeDeleted());
+        dispatch(loadEmployees());
       })
       .catch((error) => console.log(error));
   };

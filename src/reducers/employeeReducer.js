@@ -13,6 +13,11 @@ const employeeReducer = (state = initialState, { type, payload }) => {
         employees: payload,
       };
 
+    case action.DELETE_EMPLOYEE:
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }
