@@ -1,10 +1,12 @@
 import React,{ useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { loadEmployees } from "../../actions/employeeAction";
-
+import Moment from 'moment';
+ 
 const EmployeeDetails = () => {
   const dispatch = useDispatch();
   const employees = useSelector((state) => state.allEmployees.employees);
+  const hire_date=Moment(employees.hire_date).format("YYYY-MM-DD");
   useEffect(() => {
     dispatch(loadEmployees());
   }, []);
@@ -25,10 +27,10 @@ const EmployeeDetails = () => {
         {employees.map((employees) => (
           <tbody>
             <tr>
-              <td>{employees.name}</td>
-              <td>{employees.job}</td>
-              <td>{employees.hireDate}</td>
-              <td>{employees.department}</td>
+              <td>{employees.emp_name}</td>
+              <td>{employees.job_name}</td>
+              <td>{hire_date}</td>
+              <td>{employees.dept_name}</td>
               <td>
                 <button className="btn btn-danger">Delete</button>
               </td>
