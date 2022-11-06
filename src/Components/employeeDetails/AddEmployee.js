@@ -16,7 +16,7 @@ const AddEmployee = () => {
     hire_date: "",
     dept_id: "",
   });
-  const { emp_name, job_name, hire_date } = inputs;
+  const { emp_name, job_name, hire_date, dept_id } = inputs;
 
   const handleChange = (event) => {
     let { name, value } = event.target;
@@ -83,12 +83,14 @@ const AddEmployee = () => {
 
         <div className="form-group">
           <select
+            required
+            value={dept_id}
             className="form-control"
             onChange={handleChange}
             name="dept_id"
             id="dept_select"
           >
-            <option>Select Department</option>
+            <option value="">Select Department</option>
             {dept.map((d, index) => (
               <option key={index} value={d.dept_id}>
                 {d.dept_name}
