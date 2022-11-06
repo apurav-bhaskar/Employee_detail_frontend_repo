@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import { loadEmployees, deleteEmployee } from "../../actions/employeeAction";
 import Moment from "moment";
 
@@ -7,6 +9,12 @@ const EmployeeDetails = () => {
   const dispatch = useDispatch();
   const employees = useSelector((state) => state.allEmployees.employees);
   const hire_date = Moment(employees.hire_date).format("YYYY-MM-DD");
+
+  const navigate = useNavigate();
+  const toComponentEditEmployee = (id) => {
+    navigate("/editEmployee", { state: id });
+  };
+
   useEffect(() => {
     dispatch(loadEmployees());
   }, []);
@@ -14,6 +22,7 @@ const EmployeeDetails = () => {
   const handleDelete = async (id) => {
     dispatch(deleteEmployee(id));
   };
+
   return (
     <>
       <table class="table table-striped table-dark">
@@ -45,7 +54,14 @@ const EmployeeDetails = () => {
                 </button>
               </td>
               <td>
-                <button className="btn btn-primary">Edit</button>
+                <button
+                  onClick={() => {
+                    toComponentEditEmployee(employees.emp_id);
+                  }}
+                  className="btn btn-primary"
+                >
+                  Edit
+                </button>
               </td>
             </tr>
           </tbody>

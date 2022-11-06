@@ -6,4 +6,7 @@ export default makeStyles(() => ({
     justifyContent: "center",
     padding: "30px 40px",
   },
+  linkStyle: {
+    textDecoration: "none",
+  },
 }));

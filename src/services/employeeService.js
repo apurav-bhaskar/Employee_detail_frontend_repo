@@ -2,7 +2,7 @@ import apiService from "../helpers/apiService";
 export default {
   get: async () => {
     const response = await apiService.get("employee");
-    //console.log(response.data);
+    console.log(response.data);
     return response.data;
   },
   delete: async (id) => {
@@ -11,6 +11,10 @@ export default {
   },
   create: async (payload) => {
     const response = await apiService.post(`add`,payload);
+    return response.data;
+  },
+  update: async (payload,id) => {
+    const response = await apiService.put(`edit/${id}`,payload);
     return response.data;
   },
   

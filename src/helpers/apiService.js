@@ -11,5 +11,8 @@ export default {
   post: async (path,payload) => {
     return axios.post(`${urls.service}/${path}`,payload);
   },
+  put: async (path,payload) => {
+    return axios.put(`${urls.service}/${path}`,payload);
+  },
   
 };

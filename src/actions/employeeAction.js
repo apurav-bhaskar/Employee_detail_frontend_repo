@@ -14,6 +14,10 @@ export const employeeAdded = () => ({
   type: types.ADD_EMPLOYEE,
 });
 
+export const employeeUpdated = () => ({
+  type: types.EDIT_EMPLOYEE,
+});
+
 export const loadEmployees = () => {
   return function (dispatch) {
     employeeService
@@ -43,6 +47,19 @@ export const addEmployee = (inputs) => {
       .create(inputs)
       .then((resp) => {
         dispatch(employeeAdded());
+        dispatch(loadEmployees());
+      })
+      .catch((error) => console.log(error));
+  };
+};
+
+
+export const editEmployee = (inputs,id) => {
+  return function (dispatch) {
+    employeeService
+      .update(inputs,id)
+      .then((resp) => {
+        dispatch(employeeUpdated());
         dispatch(loadEmployees());
       })
       .catch((error) => console.log(error));
