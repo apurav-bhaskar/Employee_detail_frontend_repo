@@ -8,4 +8,8 @@ export default {
   delete: async (path) => {
     return axios.delete(`${urls.service}/${path}`);
   },
+  post: async (path,payload) => {
+    return axios.post(`${urls.service}/${path}`,payload);
+  },
+  
 };

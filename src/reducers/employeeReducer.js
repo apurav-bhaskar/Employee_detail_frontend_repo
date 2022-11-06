@@ -18,6 +18,11 @@ const employeeReducer = (state = initialState, { type, payload }) => {
         ...state,
       };
 
+    case action.ADD_EMPLOYEE:
+      return {
+        ...state,
+      };
+
     default:
       return state;
   }

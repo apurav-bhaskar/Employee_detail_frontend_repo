@@ -1,19 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles/addEmployeeStyles";
+import { addEmployee } from "../../actions/employeeAction";
+import departmentService from "../../services/departmentService";
 
 const AddEmployee = () => {
   const classes = styles();
   const navigate = useNavigate();
-  const [inputs, setInputs] = useState({});
+  const dispatch = useDispatch();
+  const [dept, setDept] = useState([]);
+  const [inputs, setInputs] = useState({
+    emp_name: "",
+    job_name: "",
+    hire_date: "",
+    dept_id: "",
+  });
+  const { emp_name, job_name, hire_date } = inputs;
+
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    let { name, value } = event.target;
+    setInputs({ ...inputs, [name]: value });
   };
-  const handleSubmit = (event) => {
+
+  const handleSubmit = () => {
+    dispatch(addEmployee(inputs));
     navigate("/");
   };
+  useEffect(() => {
+    departmentService.fetch().then((allDept) => {
+      setDept(allDept);
+    });
+  }, []);
+
   return (
     <div className={classes.formStyle}>
       <form onSubmit={handleSubmit}>
@@ -23,10 +42,9 @@ const AddEmployee = () => {
 
           <input
             type="text"
-            name="name"
-            value={inputs.name || ""}
+            name="emp_name"
+            value={emp_name}
             className="form-control"
-            id="name"
             aria-describedby="emailHelp"
             placeholder="Enter employee Name"
             required
@@ -40,10 +58,9 @@ const AddEmployee = () => {
 
           <input
             type="text"
-            name="job"
-            value={inputs.job || ""}
+            name="job_name"
+            value={job_name}
             className="form-control"
-            id="job"
             placeholder="Enter Job name"
             required
             onChange={handleChange}
@@ -53,32 +70,39 @@ const AddEmployee = () => {
         <div className="form-group">
           <label htmlFor="exampleInputPassword1">Hire Date</label>
           <input
-            type="text"
-            name="hireDate"
-            value={inputs.hireDate || ""}
+            type="date"
+            name="hire_date"
+            value={hire_date}
             className="form-control"
-            id="hireDate"
-            placeholder="Enter Date Of onboarding"
+            placeholder="YYYY-MM-DD"
             required
             onChange={handleChange}
           />
         </div>
         <br />
+
         <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Department</label>
-          <input
-            type="text"
-            name="dept"
-            value={inputs.dept || ""}
+          <select
             className="form-control"
-            id="dept"
-            placeholder="Enter Department Name"
-            required
             onChange={handleChange}
-          />
+            name="dept_id"
+            id="dept_select"
+          >
+            <option>Select Department</option>
+            {dept.map((d, index) => (
+              <option key={index} value={d.dept_id}>
+                {d.dept_name}
+              </option>
+            ))}
+          </select>
         </div>
         <br />
-        <button type="submit" className="btn btn-primary btn-sm">
+
+        <button
+          onChange={handleChange}
+          type="submit"
+          className="btn btn-primary btn-lg"
+        >
           Submit
         </button>
       </form>
