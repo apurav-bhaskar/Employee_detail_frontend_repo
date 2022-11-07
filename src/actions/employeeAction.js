@@ -21,7 +21,7 @@ export const employeeUpdated = () => ({
 export const loadEmployees = () => {
   return function (dispatch) {
     employeeService
-      .get()
+      .getEmp()
       .then((resp) => {
         dispatch(retrieveEmployees(resp));
       })
@@ -32,7 +32,7 @@ export const loadEmployees = () => {
 export const deleteEmployee = (id) => {
   return function (dispatch) {
     employeeService
-      .delete(id)
+      .deleteEmp(id)
       .then((resp) => {
         dispatch(employeeDeleted());
         dispatch(loadEmployees());
@@ -44,7 +44,7 @@ export const deleteEmployee = (id) => {
 export const addEmployee = (inputs) => {
   return function (dispatch) {
     employeeService
-      .create(inputs)
+      .addEmp(inputs)
       .then((resp) => {
         dispatch(employeeAdded());
         dispatch(loadEmployees());
@@ -57,7 +57,7 @@ export const addEmployee = (inputs) => {
 export const editEmployee = (inputs,id) => {
   return function (dispatch) {
     employeeService
-      .update(inputs,id)
+      .updateEmp(inputs,id)
       .then((resp) => {
         dispatch(employeeUpdated());
         dispatch(loadEmployees());

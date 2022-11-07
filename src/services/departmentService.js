@@ -1,9 +1,8 @@
 import apiService from "../helpers/apiService";
 export default {
 
-    fetch: async () => {
-      const response = await apiService.get("department"); 
-      //console.log(response.data);
+    fetchDept: async () => {
+      const response = await apiService.getDept("department"); 
       return response.data;
     },
   };

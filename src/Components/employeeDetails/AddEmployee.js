@@ -28,7 +28,7 @@ const AddEmployee = () => {
     navigate("/");
   };
   useEffect(() => {
-    departmentService.fetch().then((allDept) => {
+    departmentService.fetchDept().then((allDept) => {
       setDept(allDept);
     });
   }, []);

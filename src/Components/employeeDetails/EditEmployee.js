@@ -29,7 +29,7 @@ const id=location.state;
     navigate("/");
   };
   useEffect(() => {
-    departmentService.fetch().then((allDept) => {
+    departmentService.fetchDept().then((allDept) => {
       setDept(allDept);
     });
   }, []);

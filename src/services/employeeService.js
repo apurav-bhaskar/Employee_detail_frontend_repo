@@ -1,20 +1,20 @@
 import apiService from "../helpers/apiService";
 export default {
-  get: async () => {
-    const response = await apiService.get("employee");
+  getEmp: async () => {
+    const response = await apiService.getEmp("employee");
     console.log(response.data);
     return response.data;
   },
-  delete: async (id) => {
-    const response = await apiService.delete(`delete/${id}`);
+  deleteEmp: async (id) => {
+    const response = await apiService.deleteEmp(`delete/${id}`);
     return response.data;
   },
-  create: async (payload) => {
-    const response = await apiService.post(`add`,payload);
+  addEmp: async (payload) => {
+    const response = await apiService.addEmp(`add`,payload);
     return response.data;
   },
-  update: async (payload,id) => {
-    const response = await apiService.put(`edit/${id}`,payload);
+  updateEmp: async (payload,id) => {
+    const response = await apiService.updateEmp(`edit/${id}`,payload);
     return response.data;
   },
   
