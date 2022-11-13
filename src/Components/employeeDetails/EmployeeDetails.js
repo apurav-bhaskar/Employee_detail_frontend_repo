@@ -11,8 +11,8 @@ const EmployeeDetails = () => {
   const hire_date = Moment(employees.hire_date).format("YYYY-MM-DD");
 
   const navigate = useNavigate();
-  const toComponentEditEmployee = (id) => {
-    navigate("/editEmployee", { state: id });
+  const toComponentEditEmployee = (employee) => {
+    navigate("/editEmployee", { state: employee });
   };
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const EmployeeDetails = () => {
               <td>
                 <button
                   onClick={() => {
-                    toComponentEditEmployee(employees.emp_id);
+                    toComponentEditEmployee(employees);
                   }}
                   className="btn btn-primary"
                 >

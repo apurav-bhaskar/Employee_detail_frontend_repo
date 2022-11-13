@@ -10,22 +10,23 @@ const EditEmployee = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+  const employeeToEdit = location.state;
   const [dept, setDept] = useState([]);
   const [inputs, setInputs] = useState({
-    emp_name: "",
-    job_name: "",
-    hire_date: "",
-    dept_id: "",
+    emp_name: employeeToEdit.emp_name,
+    job_name: employeeToEdit.job_name,
+    hire_date: employeeToEdit.hire_date,
+    dept_id: employeeToEdit.dept_id,
   });
   const { emp_name, job_name, hire_date, dept_id } = inputs;
-const id=location.state;
+
   const handleChange = (event) => {
     let { name, value } = event.target;
     setInputs({ ...inputs, [name]: value });
   };
 
   const handleSubmit = () => {
-    dispatch(editEmployee(inputs,id));
+    dispatch(editEmployee(inputs, employeeToEdit));
     navigate("/");
   };
   useEffect(() => {
