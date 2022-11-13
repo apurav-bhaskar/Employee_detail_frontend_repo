@@ -42,7 +42,7 @@ const EmployeeDetails = () => {
               <td>{employees.emp_name}</td>
               <td>{employees.job_name}</td>
               <td>{hire_date}</td>
-              <td>{employees.dept_name}</td>
+              <td>{employees.department.dept_name}</td>
               <td>
                 <button
                   onClick={() => {
