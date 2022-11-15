@@ -3,13 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { loadEmployees, deleteEmployee } from "../../actions/employeeAction";
-import Moment from "moment";
 
 const EmployeeDetails = () => {
   const dispatch = useDispatch();
   const employees = useSelector((state) => state.allEmployees.employees);
-  const hire_date = Moment(employees.hire_date).format("YYYY-MM-DD");
-
   const navigate = useNavigate();
   const toComponentEditEmployee = (employee) => {
     navigate("/editEmployee", { state: employee });
@@ -41,7 +38,7 @@ const EmployeeDetails = () => {
             <tr>
               <td>{employees.emp_name}</td>
               <td>{employees.job_name}</td>
-              <td>{hire_date}</td>
+              <td>{employees.hire_date}</td>
               <td>{employees.department.dept_name}</td>
               <td>
                 <button

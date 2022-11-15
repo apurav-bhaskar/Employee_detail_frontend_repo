@@ -26,7 +26,7 @@ const EditEmployee = () => {
   };
 
   const handleSubmit = () => {
-    dispatch(editEmployee(inputs, employeeToEdit));
+    dispatch(editEmployee(inputs, employeeToEdit.emp_id));
     navigate("/");
   };
   useEffect(() => {
