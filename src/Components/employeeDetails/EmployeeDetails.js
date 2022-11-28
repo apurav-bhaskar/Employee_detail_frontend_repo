@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { loadEmployees, deleteEmployee } from "../../actions/employeeAction";
-
+import Moment from 'moment';
 const EmployeeDetails = () => {
   const dispatch = useDispatch();
   const employees = useSelector((state) => state.allEmployees.employees);
@@ -11,7 +11,7 @@ const EmployeeDetails = () => {
   const toComponentEditEmployee = (employee) => {
     navigate("/editEmployee", { state: employee });
   };
-
+ //const hire_date= employees.hire_date; //Moment(employees.hire_date).format('MM/DD/YYYY');
   useEffect(() => {
     dispatch(loadEmployees());
   }, []);

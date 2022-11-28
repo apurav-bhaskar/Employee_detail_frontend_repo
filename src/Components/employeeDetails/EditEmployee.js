@@ -72,7 +72,7 @@ const EditEmployee = () => {
         <div className="form-group">
           <label htmlFor="exampleInputPassword1">Hire Date</label>
           <input
-            type="date"
+            type="text"
             name="hire_date"
             value={hire_date}
             className="form-control"
