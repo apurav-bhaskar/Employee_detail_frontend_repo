@@ -1,4 +1,5 @@
 import axios from "axios";
+import { verifyUser } from "../actions/userAction";
 import { urls } from "../config/env-config";
 
 export default {
@@ -16,6 +17,9 @@ export default {
   },
   getDept: async (path) => {
     return axios.get(`${urls.service}/${path}`);
+  },
+  verifyUser: async (path,payload) => {
+    return axios.post(`${urls.service}/${path}`,payload)
   }
   
 };

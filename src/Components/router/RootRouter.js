@@ -4,7 +4,7 @@ import AddEmployee from '../employeeDetails/AddEmployee'
 import EmployeeDetails from '../employeeDetails/EmployeeDetails'
 import EditEmployee from '../employeeDetails/EditEmployee'
 import Error from '../error/Error'
-import Login from '../employeeDetails/Login'
+import Login from '../userDetails/Login'
 const RootRouter = () => {
   return (
     <div>
