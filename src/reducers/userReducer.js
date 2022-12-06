@@ -10,6 +10,10 @@ const userReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
       };
+    case action.CREATE_USER:
+      return {
+        ...state,
+      };
 
     default:
       return state;

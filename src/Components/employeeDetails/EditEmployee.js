@@ -27,7 +27,7 @@ const EditEmployee = () => {
 
   const handleSubmit = () => {
     dispatch(editEmployee(inputs, employeeToEdit.emp_id));
-    navigate("/");
+    navigate("/homepage");
   };
   useEffect(() => {
     departmentService.fetchDept().then((allDept) => {

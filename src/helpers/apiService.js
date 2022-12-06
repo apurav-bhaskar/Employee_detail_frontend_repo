@@ -24,9 +24,13 @@ export default {
     x.then(function (resp) {
       localStorage.setItem("tokenDetail", resp.data.token);
       setAuthHeader(resp.data.token);
-      window.location.reload("/");
+      window.location.reload("/homepage");
     });
 
     return x;
+  },
+
+  createUser: async (path, payload) => {
+    return axios.post(`${urls.service}/${path}`, payload);
   },
 };

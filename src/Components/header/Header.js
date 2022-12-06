@@ -12,17 +12,17 @@ import {
 } from "@material-ui/core/";
 const Header = () => {
   const classes = styles();
+
   return (
     <AppBar position="relative">
       <Toolbar>
         <div className={classes.headerTitle}>
-          <Link to="/">
+          <Link to="/homepage">
             <Avatar src={logo}></Avatar>
           </Link>
 
           <div className={classes.title}>
-            <Link to="/" className={classes.linkStyle}>
-              {" "}
+            <Link to="/homepage" className={classes.linkStyle}>
               <Typography style={{ color: "white" }}>
                 Employee Details
               </Typography>

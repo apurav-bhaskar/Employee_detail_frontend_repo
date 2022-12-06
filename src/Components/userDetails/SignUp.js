@@ -3,10 +3,9 @@ import styles from "./styles/loginStyles";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { verifyUser } from "../../actions/userAction";
-import { Link } from "react-router-dom";
+import { createUser } from "../../actions/userAction";
 
-const Login = () => {
+const SignUP = () => {
   const classes = styles();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,8 +19,8 @@ const Login = () => {
     setInputs({ ...inputs, [name]: value });
   };
   const handleSubmit = () => {
-    dispatch(verifyUser(inputs));
-    navigate("/homepage");
+    dispatch(createUser(inputs));
+    navigate("/");
   };
 
   return (
@@ -55,17 +54,11 @@ const Login = () => {
           onChange={handleChange}
         />
       </div>
-      <br />
-      <button type="submit" className="btn btn-primary" onChange={handleChange}>
-        Login
+      <button type="submit" className="btn btn-success" onChange={handleChange}>
+        SignUp!
       </button>
-      <br />
-
-      <Link to="/signup" className="btn btn-success">
-        Don't have account SignUp!
-      </Link>
     </form>
   );
 };
 
-export default Login;
+export default SignUP;

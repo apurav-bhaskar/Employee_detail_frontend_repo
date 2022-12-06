@@ -25,7 +25,7 @@ const AddEmployee = () => {
 
   const handleSubmit = () => {
     dispatch(addEmployee(inputs));
-    navigate("/");
+    navigate("/homepage");
   };
   useEffect(() => {
     departmentService.fetchDept().then((allDept) => {
