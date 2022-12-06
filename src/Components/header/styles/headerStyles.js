@@ -11,6 +11,10 @@ export default makeStyles(() => ({
     marginLeft: "20px",
     marginTop: "5.6px",
   },
+  mainTitle: {
+    marginLeft: "20px",
+  },
+
   linkStyle: {
     textDecoration: "none",
   },
