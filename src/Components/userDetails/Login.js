@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles/loginStyles";
-import  { useState} from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { verifyUser } from "../../actions/userAction";
@@ -24,40 +24,38 @@ const Login = () => {
   };
 
   return (
-    <form 
-    onSubmit={handleSubmit}
-    className={classes.formStyle}>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">
+    <form onSubmit={handleSubmit} className={classes.formStyle}>
+      <div className="mb-3">
+        <label htmlFor="exampleInputEmail1" className="form-label">
           Email address
         </label>
         <input
           type="email"
           name="email_id"
           value={email_id}
-          class="form-control"
+          className="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           required
           onChange={handleChange}
         />
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">
+      <div className="mb-3">
+        <label htmlFor="exampleInputPassword1" className="form-label">
           Password
         </label>
         <input
           type="password"
           name="password"
           value={password}
-          class="form-control"
+          className="form-control"
           id="exampleInputPassword1"
           required
           onChange={handleChange}
         />
       </div>
       <br />
-      <button type="submit" class="btn btn-primary" onChange={handleChange}>
+      <button type="submit" className="btn btn-primary" onChange={handleChange}>
         Login
       </button>
     </form>

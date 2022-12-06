@@ -1,11 +1,9 @@
 import * as types from "./types";
 import userService from "../services/userService";
 
-
 export const userVerified = () => ({
   type: types.VERIFY_USER,
 });
-
 
 export const verifyUser = (inputs) => {
   return function (dispatch) {
@@ -13,10 +11,7 @@ export const verifyUser = (inputs) => {
       .verifyUser(inputs)
       .then((resp) => {
         dispatch(userVerified());
-        
       })
       .catch((error) => console.log(error));
   };
 };
-
-
