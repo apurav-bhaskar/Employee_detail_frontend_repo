@@ -1,5 +1,6 @@
 import axios from "axios";
 import { urls } from "../config/env-config";
+import setAuthHeader from "../utils/setAuthHeader";
 
 export default {
   getEmp: async (path) => {
@@ -22,13 +23,8 @@ export default {
 
     x.then(function (resp) {
       localStorage.setItem("tokenDetail", resp.data.token);
-      if (resp.data.token) {
-        axios.defaults.headers = {
-          secret_this_should_be_longer: resp.data.token,
-        };
-      } else {
-        delete axios.defaults.headers.secret_this_should_be_longer;
-      }
+      setAuthHeader(resp.data.token);
+      window.location.reload("/");
     });
 
     return x;
