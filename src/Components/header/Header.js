@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles/headerStyles";
 import logo from "./logo/employee_logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -12,6 +12,13 @@ import {
 } from "@material-ui/core/";
 const Header = () => {
   const classes = styles();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("tokenDetail");
+    navigate("/");
+    window.location.reload("/");
+  }
 
   return (
     <AppBar position="relative">
@@ -33,6 +40,11 @@ const Header = () => {
           <Link to="/addEmployee" className={classes.linkStyle}>
             <Button style={{ color: "white" }}>Add Employee</Button>
           </Link>
+        </div>
+        <div className={classes.logoutButton}>
+         
+            <Button style={{ color: "white" }} onClick={handleLogout}>Logout</Button>
+         
         </div>
       </Toolbar>
     </AppBar>
