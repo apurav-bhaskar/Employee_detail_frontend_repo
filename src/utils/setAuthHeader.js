@@ -1,5 +1,5 @@
 import axios from "axios";
-const setAuthHeader = (token) => {
+export const setAuthHeader = (token) => {
   if (token) {
     axios.defaults.headers = {
       secret_this_should_be_longer: token,
@@ -9,4 +9,3 @@ const setAuthHeader = (token) => {
   }
 };
 
-export default setAuthHeader;

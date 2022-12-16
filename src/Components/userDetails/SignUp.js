@@ -3,12 +3,13 @@ import styles from "./styles/loginStyles";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createUser } from "../../actions/userAction";
+import userAction, { createUser } from "../../actions/userAction";
 
 const SignUP = () => {
   const classes = styles();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {createUser} = userAction();
   const [inputs, setInputs] = useState({
     email_id: "",
     password: "",

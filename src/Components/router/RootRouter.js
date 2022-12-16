@@ -11,7 +11,8 @@ const RootRouter = () => {
   return (
     <div>
       <Routes>
-        <Route exact path="/" element={<Login />}></Route>
+        <Route exact path="/"
+         element={<Login />}></Route>
         <Route exact path="/signup" element={<SignUp />}></Route>
         <Route exact path="/addEmployee" element={<AddEmployee />}></Route>
         <Route exact path="/editEmployee" element={<EditEmployee />}></Route>

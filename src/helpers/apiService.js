@@ -1,6 +1,6 @@
 import axios from "axios";
 import { urls } from "../config/env-config";
-import setAuthHeader from "../utils/setAuthHeader";
+
 
 export default {
   getEmp: async (path) => {
@@ -20,12 +20,6 @@ export default {
   },
   verifyUser: async (path, payload) => {
     const x = axios.post(`${urls.service}/${path}`, payload);
-
-    x.then(function (resp) {
-      localStorage.setItem("tokenDetail", resp.data.token);
-      setAuthHeader(resp.data.token);
-      window.location.reload("/homepage");
-    });
 
     return x;
   },

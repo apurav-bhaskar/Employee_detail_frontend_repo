@@ -12,9 +12,11 @@ const EmployeeDetails = () => {
     navigate("/editEmployee", { state: employee });
   };
   //const hire_date= employees.hire_date; //Moment(employees.hire_date).format('MM/DD/YYYY');
+
   useEffect(() => {
+    if(localStorage.tokenDetail)
     dispatch(loadEmployees());
-  }, []);
+  },[]);
 
   const handleDelete = async (id) => {
     dispatch(deleteEmployee(id));
