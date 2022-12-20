@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./styles/headerStyles";
 import logo from "./logo/employee_logo.png";
 import { Link, useNavigate } from "react-router-dom";
-import WithToggle from "./ToggleHOC";
+import withToggle from "./ToggleHOC";
 
 import {
   AppBar,
@@ -11,20 +11,28 @@ import {
   Button,
   Avatar,
 } from "@material-ui/core/";
-const Header = ({ toggleStatus }) => {
+import { connect } from "react-redux";
+import { render } from "react-dom";
+
+
+
+const Header = ({ toggle,toggleStatus }) => {
   const classes = styles();
   const navigate = useNavigate();
+  
 
   const handleLogout = () => {
     localStorage.removeItem("tokenDetail");
     navigate("/");
-    //window.location.reload("/");
+   
+    window.location.reload("/");
   };
+  console.log(toggleStatus)
 
   return (
     <AppBar position="relative">
       <Toolbar>
-        {!toggleStatus && (
+        { !toggleStatus && (
           <div className={classes.headerTitle}>
             <Link to="/signup" className={classes.linkStyle}>
               <Typography style={{ color: "white" }}>Sign Up!</Typography>
@@ -36,7 +44,7 @@ const Header = ({ toggleStatus }) => {
             </div>
           </div>
         )}
-
+    
         {toggleStatus && (
           <div className={classes.headerTitle}>
             <Link to="/homepage">
@@ -63,14 +71,16 @@ const Header = ({ toggleStatus }) => {
 
         {toggleStatus && (
           <div className={classes.logoutButton}>
-            <Button style={{ color: "white" }} onClick={handleLogout}>
+            <Button style={{ color: "white" }} onClick={()=>{handleLogout();toggle()}} >
               Logout
             </Button>
           </div>
         )}
+        
       </Toolbar>
     </AppBar>
   );
 };
 
-export default WithToggle(Header);
+
+export default withToggle(Header);

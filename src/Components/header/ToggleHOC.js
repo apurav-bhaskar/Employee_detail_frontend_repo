@@ -1,28 +1,29 @@
 import React from "react";
 
 const withToggle = (PassedComponent) =>
+
   class WithToggle extends React.Component {
     state = {
       toggleStatus: false,
     };
-    constructor() {
-      super();
-      this.toggle = this.toggle.bind(this);
-    }
-
-    toggle() {
-      if (localStorage.tokenDetail) {
+    toggle(){
         this.setState({
-          toggleStatus: true,
-        });
-      }
+            toggleStatus:!this.state.toggleStatus
+        })
     }
+    
     render() {
+        if (this.state.toggleStatus == false && localStorage.tokenDetail) {
+                this.setState({
+                    toggleStatus: true,
+                  });
+                }
       return (
         <>
-          {this.toggle}
+          
           <PassedComponent
             {...this.props}
+            toggle={this.toggle}
             toggleStatus={this.state.toggleStatus}
           />
         </>

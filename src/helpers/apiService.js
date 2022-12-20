@@ -19,9 +19,7 @@ export default {
     return axios.get(`${urls.service}/${path}`);
   },
   verifyUser: async (path, payload) => {
-    const x = axios.post(`${urls.service}/${path}`, payload);
-
-    return x;
+    return axios.post(`${urls.service}/${path}`, payload);
   },
 
   createUser: async (path, payload) => {

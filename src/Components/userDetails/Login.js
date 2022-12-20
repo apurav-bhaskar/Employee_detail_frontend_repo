@@ -9,6 +9,7 @@ import { loadEmployees } from "../../actions/employeeAction";
 import axios from "axios";
 import { setAuthHeader } from "../../utils/setAuthHeader";
 import { Navigate } from "react-router-dom";
+import toggle from "../header/ToggleHOC"
 const Login = () => {
   const classes = styles();
   const navigate = useNavigate();
@@ -25,22 +26,23 @@ const Login = () => {
 
   const { verifyUser } = userAction();
   const handleSubmit = (event) => {
-    //dispatch(verifyUser(inputs));
-    //navigate("/homepage");
-    axios.post(`http://localhost:5000/login`,inputs)
-    .then((res) => {
-      console.log(res);
-      if (res.status === 200) {
-        localStorage.setItem("tokenDetail", res.data.token);
-         setAuthHeader(res.data.token);
-         console.log("LOGGED IN");
-         navigate("/homepage");
-      } 
-      else {
-        const error = new Error(res.error);
-        throw error;
-      }
-    });
+   
+    dispatch(verifyUser(inputs));
+    navigate("/homepage");
+    // axios.post(`http://localhost:5000/login`,inputs)
+    // .then((res) => {
+    //   console.log(res);
+    //   if (res.status === 200) {
+    //     localStorage.setItem("tokenDetail", res.data.token);
+    //      setAuthHeader(res.data.token);
+    //      console.log("LOGGED IN");
+    //      navigate("/homepage");
+    //   } 
+    //   else {
+    //     const error = new Error(res.error);
+    //     throw error;
+    //   }
+    // });
   };
 
   return (

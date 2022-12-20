@@ -22,6 +22,7 @@ export default (props) => {
           if (res.status === 200) {
             localStorage.setItem("tokenDetail", res.data.token);
             setAuthHeader(res.data.token);
+           window.location.reload(true);
           } else {
             const error = new Error(res.error);
             throw error;
