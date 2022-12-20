@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./styles/headerStyles";
 import logo from "./logo/employee_logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import WithToggle from "./ToggleHOC";
 
 import {
   AppBar,
@@ -10,20 +11,20 @@ import {
   Button,
   Avatar,
 } from "@material-ui/core/";
-const Header = () => {
+const Header = ({ toggleStatus }) => {
   const classes = styles();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("tokenDetail");
     navigate("/");
-    window.location.reload("/");
+    //window.location.reload("/");
   };
 
   return (
     <AppBar position="relative">
       <Toolbar>
-        {!localStorage.tokenDetail && (
+        {!toggleStatus && (
           <div className={classes.headerTitle}>
             <Link to="/signup" className={classes.linkStyle}>
               <Typography style={{ color: "white" }}>Sign Up!</Typography>
@@ -36,7 +37,7 @@ const Header = () => {
           </div>
         )}
 
-        {localStorage.tokenDetail && (
+        {toggleStatus && (
           <div className={classes.headerTitle}>
             <Link to="/homepage">
               <Avatar src={logo}></Avatar>
@@ -52,7 +53,7 @@ const Header = () => {
           </div>
         )}
 
-        {localStorage.tokenDetail && (
+        {toggleStatus && (
           <div className={classes.addButton}>
             <Link to="/addEmployee" className={classes.linkStyle}>
               <Button style={{ color: "white" }}>Add Employee</Button>
@@ -60,7 +61,7 @@ const Header = () => {
           </div>
         )}
 
-        {localStorage.tokenDetail && (
+        {toggleStatus && (
           <div className={classes.logoutButton}>
             <Button style={{ color: "white" }} onClick={handleLogout}>
               Logout
@@ -72,4 +73,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default WithToggle(Header);

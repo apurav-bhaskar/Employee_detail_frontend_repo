@@ -5,11 +5,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import userAction, { verifyUser } from "../../actions/userAction";
 import { Link } from "react-router-dom";
-import { Snackbar } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
 import { loadEmployees } from "../../actions/employeeAction";
 import axios from "axios";
-
+import { setAuthHeader } from "../../utils/setAuthHeader";
+import { Navigate } from "react-router-dom";
 const Login = () => {
   const classes = styles();
   const navigate = useNavigate();
@@ -26,8 +25,22 @@ const Login = () => {
 
   const { verifyUser } = userAction();
   const handleSubmit = (event) => {
-    dispatch(verifyUser(inputs));
-    navigate("/homepage");
+    //dispatch(verifyUser(inputs));
+    //navigate("/homepage");
+    axios.post(`http://localhost:5000/login`,inputs)
+    .then((res) => {
+      console.log(res);
+      if (res.status === 200) {
+        localStorage.setItem("tokenDetail", res.data.token);
+         setAuthHeader(res.data.token);
+         console.log("LOGGED IN");
+         navigate("/homepage");
+      } 
+      else {
+        const error = new Error(res.error);
+        throw error;
+      }
+    });
   };
 
   return (
